@@ -1,5 +1,6 @@
 const express = require('express');
 const strings = require('./lib/strings');
+const numbers = require('./lib/numbers');
 
 const app = express();
 
@@ -21,6 +22,12 @@ app.get('/strings/first-characters/:string', (req, res) => {
   } else {
     res.status(200).json({ result: strings.firstCharacter(req.params.string) });
   }
+});
+
+app.get('/numbers/add/:firstNumber/and/:secondNumber', (req, res) => {
+  res
+    .status(200)
+    .json({ result: numbers.add(Number(req.params.firstNumber), Number(req.params.secondNumber)) });
 });
 
 module.exports = app;
