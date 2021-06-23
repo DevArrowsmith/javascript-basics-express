@@ -25,9 +25,16 @@ app.get('/strings/first-characters/:string', (req, res) => {
 });
 
 app.get('/numbers/add/:firstNumber/and/:secondNumber', (req, res) => {
-  res
-    .status(200)
-    .json({ result: numbers.add(Number(req.params.firstNumber), Number(req.params.secondNumber)) });
+  if (
+    Number.isNaN(Number(req.params.firstNumber)) ||
+    Number.isNaN(Number(req.params.secondNumber))
+  ) {
+    res.status(400).json({ error: 'Parameters must be valid numbers.' });
+  } else {
+    res.status(200).json({
+      result: numbers.add(Number(req.params.firstNumber), Number(req.params.secondNumber)),
+    });
+  }
 });
 
 module.exports = app;
