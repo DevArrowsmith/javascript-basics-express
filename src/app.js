@@ -54,6 +54,8 @@ app.get('/numbers/subtract/:firstNumber/from/:secondNumber', (req, res) => {
 app.post('/numbers/multiply', (req, res) => {
   if (req.body.a === undefined || req.body.b === undefined) {
     res.status(400).json({ error: 'Parameters "a" and "b" are required.' });
+  } else if (Number.isNaN(Number(req.body.a)) || Number.isNaN(Number(req.body.b))) {
+    res.status(400).json({ error: 'Parameters "a" and "b" must be valid numbers.' });
   } else {
     res.status(200).json({ result: numbers.multiply(req.body.a, req.body.b) });
   }
