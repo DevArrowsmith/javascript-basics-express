@@ -51,4 +51,8 @@ app.get('/numbers/subtract/:firstNumber/from/:secondNumber', (req, res) => {
   }
 });
 
+app.post('/numbers/multiply', (req, res) => {
+  res.status(200).json({ result: numbers.multiply(req.body.a, req.body.b) });
+});
+
 module.exports = app;
