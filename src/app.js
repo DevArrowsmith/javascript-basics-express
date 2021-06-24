@@ -3,6 +3,7 @@ const strings = require('./lib/strings');
 const numbers = require('./lib/numbers');
 
 const app = express();
+app.use(express.json());
 
 app.get('/strings/hello/:string', (req, res) => {
   res.status(200).json({ result: strings.sayHello(req.params.string) });
