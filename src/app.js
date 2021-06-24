@@ -37,4 +37,17 @@ app.get('/numbers/add/:firstNumber/and/:secondNumber', (req, res) => {
   }
 });
 
+app.get('/numbers/subtract/:firstNumber/from/:secondNumber', (req, res) => {
+  if (
+    Number.isNaN(Number(req.params.firstNumber)) ||
+    Number.isNaN(Number(req.params.secondNumber))
+  ) {
+    res.status(400).json({ error: 'Parameters must be valid numbers.' });
+  } else {
+    res.status(200).json({
+      result: numbers.subtract(Number(req.params.secondNumber), Number(req.params.firstNumber)),
+    });
+  }
+});
+
 module.exports = app;
