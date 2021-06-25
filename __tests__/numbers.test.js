@@ -167,7 +167,7 @@ describe('/numbers', () => {
         });
     });
 
-    xit('errors if a parameter is missing', done => {
+    it('errors if a parameter is missing', done => {
       request(app)
         .post('/numbers/divide')
         .send({ a: 'fish' })

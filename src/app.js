@@ -62,7 +62,9 @@ app.post('/numbers/multiply', (req, res) => {
 });
 
 app.post('/numbers/divide', (req, res) => {
-  if (req.body.b == 0) {
+  if (req.body.a === undefined || req.body.b === undefined) {
+    res.status(400).json({ error: 'Parameters "a" and "b" are required.' });
+  } else if (req.body.b == 0) {
     res.status(400).json({ error: 'Unable to divide by 0.' });
   } else {
     res.status(200).json({ result: numbers.divide(req.body.a, req.body.b) });
