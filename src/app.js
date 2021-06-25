@@ -62,7 +62,11 @@ app.post('/numbers/multiply', (req, res) => {
 });
 
 app.post('/numbers/divide', (req, res) => {
-  res.status(200).json({ result: numbers.divide(req.body.a, req.body.b) });
+  if (req.body.b == 0) {
+    res.status(400).json({ error: 'Unable to divide by 0.' });
+  } else {
+    res.status(200).json({ result: numbers.divide(req.body.a, req.body.b) });
+  }
 });
 
 module.exports = app;
