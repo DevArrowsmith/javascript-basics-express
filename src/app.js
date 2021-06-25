@@ -61,4 +61,8 @@ app.post('/numbers/multiply', (req, res) => {
   }
 });
 
+app.post('/numbers/divide', (req, res) => {
+  res.status(200).json({ result: numbers.divide(req.body.a, req.body.b) });
+});
+
 module.exports = app;
