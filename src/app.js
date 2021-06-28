@@ -102,4 +102,8 @@ app.get('/booleans/is-odd/:num', (req, res) => {
   }
 });
 
+app.get('/booleans/:string/starts-with/:character', (req, res) => {
+  res.status(200).json({ result: booleans.startsWith(req.params.character, req.params.string) });
+});
+
 module.exports = app;
