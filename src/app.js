@@ -115,4 +115,8 @@ app.post('/arrays/element-at-index/:index', (req, res) => {
   res.status(200).json({ result: arrays.getNthElement(req.params.index, req.body.array) });
 });
 
+app.post('/arrays/to-string/', (req, res) => {
+  res.status(200).json({ result: arrays.arrayToCSVString(req.body.array) });
+});
+
 module.exports = app;
