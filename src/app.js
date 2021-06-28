@@ -90,4 +90,8 @@ app.post('/booleans/negate', (req, res) => {
   res.status(200).json({ result: booleans.negate(req.body.value) });
 });
 
+app.post('/booleans/truthiness', (req, res) => {
+  res.status(200).json({ result: booleans.truthiness(req.body.value) });
+});
+
 module.exports = app;
