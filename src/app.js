@@ -103,7 +103,11 @@ app.get('/booleans/is-odd/:num', (req, res) => {
 });
 
 app.get('/booleans/:string/starts-with/:character', (req, res) => {
-  res.status(200).json({ result: booleans.startsWith(req.params.character, req.params.string) });
+  if (req.params.character.length !== 1) {
+    res.status(400).json({ error: 'Parameter "character" must be a single character.' });
+  } else {
+    res.status(200).json({ result: booleans.startsWith(req.params.character, req.params.string) });
+  }
 });
 
 module.exports = app;
