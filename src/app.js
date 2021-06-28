@@ -1,6 +1,7 @@
 const express = require('express');
 const strings = require('./lib/strings');
 const numbers = require('./lib/numbers');
+const booleans = require('./lib/booleans');
 
 const app = express();
 app.use(express.json());
@@ -83,6 +84,10 @@ app.post('/numbers/remainder', (req, res) => {
   } else {
     res.status(200).json({ result: numbers.remainder(req.body.a, req.body.b) });
   }
+});
+
+app.post('/booleans/negate', (req, res) => {
+  res.status(200).json({ result: booleans.negate(req.body.value) });
 });
 
 module.exports = app;
