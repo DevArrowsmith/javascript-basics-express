@@ -123,4 +123,8 @@ app.post('/arrays/append/', (req, res) => {
   res.status(200).json({ result: arrays.addToArray2(req.body.value, req.body.array) });
 });
 
+app.post('/arrays/starts-with-vowel/', (req, res) => {
+  res.status(200).json({ result: arrays.elementsStartingWithAVowel(req.body.array) });
+});
+
 module.exports = app;
