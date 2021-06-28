@@ -95,7 +95,11 @@ app.post('/booleans/truthiness', (req, res) => {
 });
 
 app.get('/booleans/is-odd/:num', (req, res) => {
-  res.status(200).json({ result: booleans.isOdd(req.params.num) });
+  if (Number.isNaN(Number(req.params.num))) {
+    res.status(400).json({ error: 'Parameter must be a number.' });
+  } else {
+    res.status(200).json({ result: booleans.isOdd(req.params.num) });
+  }
 });
 
 module.exports = app;
