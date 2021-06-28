@@ -119,4 +119,8 @@ app.post('/arrays/to-string/', (req, res) => {
   res.status(200).json({ result: arrays.arrayToCSVString(req.body.array) });
 });
 
+app.post('/arrays/append/', (req, res) => {
+  res.status(200).json({ result: arrays.addToArray2(req.body.value, req.body.array) });
+});
+
 module.exports = app;
