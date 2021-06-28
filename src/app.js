@@ -127,4 +127,14 @@ app.post('/arrays/starts-with-vowel/', (req, res) => {
   res.status(200).json({ result: arrays.elementsStartingWithAVowel(req.body.array) });
 });
 
+app.post('/arrays/remove-element', (req, res) => {
+  const { index } = req.query;
+  const { array } = req.body;
+  if (index === undefined) {
+    res.status(200).json({ result: arrays.removeNthElement2(0, array) });
+  } else {
+    res.status(200).json({ result: arrays.removeNthElement2(Number(index), array) });
+  }
+});
+
 module.exports = app;
