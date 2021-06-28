@@ -2,6 +2,7 @@ const express = require('express');
 const strings = require('./lib/strings');
 const numbers = require('./lib/numbers');
 const booleans = require('./lib/booleans');
+const arrays = require('./lib/arrays');
 
 const app = express();
 app.use(express.json());
@@ -108,6 +109,10 @@ app.get('/booleans/:string/starts-with/:character', (req, res) => {
   } else {
     res.status(200).json({ result: booleans.startsWith(req.params.character, req.params.string) });
   }
+});
+
+app.post('/arrays/element-at-index/:index', (req, res) => {
+  res.status(200).json({ result: arrays.getNthElement(req.params.index, req.body.array) });
 });
 
 module.exports = app;
