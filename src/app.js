@@ -94,4 +94,8 @@ app.post('/booleans/truthiness', (req, res) => {
   res.status(200).json({ result: booleans.truthiness(req.body.value) });
 });
 
+app.get('/booleans/is-odd/:num', (req, res) => {
+  res.status(200).json({ result: booleans.isOdd(req.params.num) });
+});
+
 module.exports = app;
